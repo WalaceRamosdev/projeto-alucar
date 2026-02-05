@@ -1,0 +1,120 @@
+[2026-02-03T16:41:39.677Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.brand ILIKE $2 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%Renault%"]
+[2026-02-03T16:42:56.491Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:43:01.620Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:46:10.570Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:46:15.571Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:49:09.850Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:49:15.672Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.state ILIKE $2 AND v.brand ILIKE $3 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%RJ%","%Renault%"]
+[2026-02-03T16:50:02.454Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.state ILIKE $2 AND v.brand ILIKE $3 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%RJ%","%Renault%"]
+[2026-02-03T16:50:22.041Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.state ILIKE $2 AND v.brand ILIKE $3 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%RJ%","%Renault%"]
+[2026-02-03T16:51:39.159Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.state ILIKE $2 AND v.brand ILIKE $3 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%RJ%","%Renault%"]
+[2026-02-03T16:51:41.722Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.state ILIKE $2 AND v.brand ILIKE $3 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%RJ%","%Renault%"]
+[2026-02-03T16:52:05.482Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image, (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) AS distance FROM vehicles v WHERE is_active = true AND v.latitude IS NOT NULL AND v.longitude IS NOT NULL AND (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) <= $3 AND v.state ILIKE $4 AND v.brand ILIKE $5 ORDER BY created_at DESC | PARAMS: [-21.7511,-41.3267,25,"%RJ%","%Renault%"]
+[2026-02-03T16:52:11.532Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image, (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) AS distance FROM vehicles v WHERE is_active = true AND v.latitude IS NOT NULL AND v.longitude IS NOT NULL AND (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) <= $3 AND v.state ILIKE $4 ORDER BY created_at DESC | PARAMS: [-21.7511,-41.3267,25,"%RJ%"]
+[2026-02-03T16:52:19.030Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.state ILIKE $2 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%RJ%"]
+[2026-02-03T16:52:23.882Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image, (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) AS distance FROM vehicles v WHERE is_active = true AND v.latitude IS NOT NULL AND v.longitude IS NOT NULL AND (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) <= $3 AND v.state ILIKE $4 ORDER BY created_at DESC | PARAMS: [-21.7511,-41.3267,25,"%RJ%"]
+[2026-02-03T16:52:27.106Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.city ILIKE $1 AND v.state ILIKE $2 ORDER BY created_at DESC | PARAMS: ["%Campos dos Goytacazes%","%RJ%"]
+[2026-02-03T16:52:29.904Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:52:35.947Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:52:47.478Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image, (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) AS distance FROM vehicles v WHERE is_active = true AND v.latitude IS NOT NULL AND v.longitude IS NOT NULL AND (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) <= $3 AND v.state ILIKE $4 ORDER BY created_at DESC | PARAMS: [-22.7161,-43.5531,25,"%RJ%"]
+[2026-02-03T16:53:01.709Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC | PARAMS: ["%RJ%"]
+[2026-02-03T16:54:16.293Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC LIMIT $2 | PARAMS: ["%RJ%",3]
+[2026-02-03T16:54:31.465Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image, (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) AS distance FROM vehicles v WHERE is_active = true AND v.latitude IS NOT NULL AND v.longitude IS NOT NULL AND (6371 * acos(LEAST(1, GREATEST(-1, cos(radians($1)) * cos(radians(v.latitude)) * cos(radians(v.longitude) - radians($2)) + sin(radians($1)) * sin(radians(v.latitude)))))) <= $3 AND v.state ILIKE $4 ORDER BY created_at DESC | PARAMS: [-22.7161,-43.5531,25,"%RJ%"]
+[2026-02-03T16:54:53.570Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC LIMIT $2 | PARAMS: ["%RJ%",3]
+[2026-02-03T16:54:56.397Z] QUERY: SELECT v.*, 
+            COALESCE(
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id AND is_main = true LIMIT 1),
+                (SELECT image_url FROM vehicle_images WHERE vehicle_id = v.id ORDER BY "order" ASC LIMIT 1)
+            ) as main_image FROM vehicles v WHERE is_active = true AND v.state ILIKE $1 ORDER BY created_at DESC LIMIT $2 | PARAMS: ["%RJ%",3]
