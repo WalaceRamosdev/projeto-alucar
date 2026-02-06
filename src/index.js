@@ -39,9 +39,18 @@ app.use(cors({
     origin: (origin, callback) => {
         // Allow requests with no origin (like mobile apps or curl requests)
         if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.vercel.app')) {
+
+        // Clean origin for comparison (remove trailing slash)
+        const cleanOrigin = origin.replace(/\/$/, "");
+
+        const isAllowed = allowedOrigins.some(o => o.replace(/\/$/, "") === cleanOrigin) ||
+            origin.endsWith('.vercel.app') ||
+            (process.env.FRONTEND_URL && cleanOrigin === process.env.FRONTEND_URL.replace(/\/$/, ""));
+
+        if (isAllowed) {
             callback(null, true);
         } else {
+            console.warn(`[CORS] Rejected origin: ${origin}`);
             callback(new Error('Not allowed by CORS'));
         }
     },
